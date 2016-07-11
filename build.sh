@@ -44,5 +44,5 @@ fi
 unzip -n -u ${SRC_DIR}/${SOURCE_FILE}
 
 # TODO 4
-./install .
-make -j 2
+# Install Matlab runtime environment specifing ${SOFT_DIR} as destinationFolder
+./install -mode silent -agreeToLicense yes -destinationFolder ${SOFT_DIR}/
