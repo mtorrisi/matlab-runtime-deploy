@@ -36,7 +36,7 @@ if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ]
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
   # Someone else has the file, wait till it's released
   while [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; do
-    echo " There seems to be a download currently under way, will check again in 5 sec"
+    echo "There seems to be a download currently under way, will check again in 5 sec"
     sleep 5
   done
 else
