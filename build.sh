@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-## TODO :
-# 1. set the correct name of the install file
-# 2. Set the correct url for downloading the source file http://url.to.get.matlab <-- set the correct one
 . /etc/profile.d/modules.sh
 # Add the CI environment
 module add ci
@@ -29,8 +26,7 @@ mkdir -p ${SOFT_DIR}
 if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ] ; then
   touch  ${SRC_DIR}/${SOURCE_FILE}.lock
   echo "seems like this is the first build - let's geet the source"
-  # TODO 2
-  wget http://it.mathworks.com/supportfiles/downloads/R2016a/deployment_files/R2016a/installers/glnxa64/MCR_R2016a_glnxa64_installer.zip -O ${SRC_DIR}/${SOURCE_FILE}
+  wget http://it.mathworks.com/supportfiles/downloads/R2016a/deployment_files/R2016a/installers/glnxa64/${SOURCE_FILE} -O ${SRC_DIR}/${SOURCE_FILE}
   echo "releasing lock"
   rm -v ${SRC_DIR}/${SOURCE_FILE}.lock
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
@@ -42,10 +38,10 @@ elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
 else
   echo "continuing from previous builds, using source at " ${SRC_DIR}/${SOURCE_FILE}
 fi
-# Unpack
-# TODO 4
 
-unzip -n -u MCR_R2016a_glnxa64_installer.zip
+# Unpack
+
+unzip -n -u ${SRC_DIR}/${SOURCE_FILE}
 
 # TODO 4
 # Install Matlab runtime environment specifing ${SOFT_DIR} as destinationFolder
