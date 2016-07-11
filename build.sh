@@ -6,7 +6,7 @@
 . /etc/profile.d/modules.sh
 # Add the CI environment
 module add ci
-# TODO 1
+
 SOURCE_FILE=MCR_R2016a_glnxa64_installer.zip
 
 
